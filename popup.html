@@ -1,0 +1,101 @@
+<!-- <!DOCTYPE html>
+<html>
+<head>
+  <title>Set API Key</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>LeetCode AI Assistant</h1>
+    <h2>Enter OpenAI API Key</h2>
+    <input type="password" id="apiKey" placeholder="sk-..." />
+    <button id="saveKey">Save</button>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Keys Manager</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>API Keys Manager</h1>
+    
+    <div class="tab-container">
+        <div class="tab active" data-tab="openai">OpenAI</div>
+        <div class="tab" data-tab="deepseek">DeepSeek</div>
+        <div class="tab" data-tab="groq">GROQ</div>
+    </div>
+    
+    <!-- OpenAI Tab -->
+    <div class="tab-content active" id="openai-tab">
+        <div class="form-group">
+            <label for="openai-api-key">OpenAI API Key</label>
+            <input type="password" id="openai-api-key" placeholder="sk-...">
+            <div class="api-status" id="openai-status"></div>
+        </div>
+        
+        <div class="form-group">
+            <label for="openai-model">Model</label>
+            <select id="openai-model">
+                <option value="gpt-4-turbo">gpt-4-turbo</option>
+                <option value="gpt-4">gpt-4</option>
+                <option value="gpt-3.5-turbo">gpt-3.5-turbo</option>
+                <option value="gpt-3.5-turbo-16k">gpt-3.5-turbo-16k</option>
+            </select>
+        </div>
+        
+        <button id="save-openai">Save OpenAI Settings</button>
+        <div class="status" id="openai-status-message"></div>
+    </div>
+    
+    <!-- DeepSeek Tab -->
+    <div class="tab-content" id="deepseek-tab">
+        <div class="form-group">
+            <label for="deepseek-api-key">DeepSeek API Key</label>
+            <input type="password" id="deepseek-api-key" placeholder="sk-...">
+            <div class="api-status" id="deepseek-status"></div>
+        </div>
+        
+        <div class="form-group">
+            <label for="deepseek-model">Model</label>
+            <select id="deepseek-model">
+                <option value="deepseek-chat">deepseek-chat</option>
+                <option value="deepseek-coder">deepseek-coder</option>
+            </select>
+        </div>
+        
+        <button id="save-deepseek">Save DeepSeek Settings</button>
+        <div class="status" id="deepseek-status-message"></div>
+    </div>
+    
+    <!-- GROQ Tab -->
+    <div class="tab-content" id="groq-tab">
+        <div class="form-group">
+            <label for="groq-api-key">GROQ API Key</label>
+            <input type="password" id="groq-api-key" placeholder="gsk-...">
+            <div class="api-status" id="groq-status"></div>
+        </div>
+        
+        <div class="form-group">
+            <label for="groq-model">Model</label>
+            <!-- <select id="groq-model">
+                <option value="whisper-large-v3">whisper-large-v3</option>
+                <option value="llama-3.3-70b-versatile">llama-3.3-70b-versatile</option>
+                <option value="gemma2-9b-it">gemma2-9b-it</option>
+            </select> -->
+            <input type="text" id="groq-model" placeholder="llama-3.3-70b-versatile"/>
+        </div>
+        
+        <button id="save-groq">Save GROQ Settings</button>
+        <div class="status" id="groq-status-message"></div>
+    </div>
+
+    <script src="popup.js"></script>
+</body>
+</html>
