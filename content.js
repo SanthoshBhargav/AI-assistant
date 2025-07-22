@@ -7,12 +7,15 @@ function addAskAIButton() {
   if (!container) return;
     console.log("container found, adding button...");
   const button = document.createElement("button");
+  const inputBox = document.createElement("input");
   button.innerText = "AskAI";
   button.id = "ask-ai-button";
   button.style.cssText = "margin:10px;padding:8px 12px;background:#2563eb !important;color:#fff !important;border:none;border-radius:5px;cursor:pointer;";
-  
+  inputBox.placeholder = "Type your question...";
+  inputBox.style.cssText = "margin:10px;padding:8px 12px;border:1px solid #ccc;border-radius:5px;";
   button.onclick = async () => {
     const questionText = document.querySelector("div[data-track-load='description_content']")?.innerText;
+    const queryText = inputBox.value.trim();
     if (!questionText) {
       alert("LeetCode problem not found.");
       return;
@@ -35,8 +38,9 @@ function addAskAIButton() {
         body: JSON.stringify({
           model: model,
           messages: [
-            { role: "system", content: "You are a coding assistant helping users with LeetCode problems." },
-            { role: "user", content: `Can you help me understand this problem?\n\n${questionText}` }
+            { role: "system", content: `You are a coding assistant helping users with LeetCode problems. Don't give the solution until the user asks for it. Give him hints.
+              This is the problem statement: ${questionText}` },
+            { role: "user", content: `${queryText}` }
           ]
         })
       });
@@ -105,8 +109,8 @@ function addAskAIButton() {
       replyContainer.appendChild(backButton);
     });
   };
-
   container.prepend(button);
+  container.prepend(inputBox);
 }
 
 window.addEventListener("load", () => {
